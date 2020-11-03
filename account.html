@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>完美剑灵</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script type="text/javascript">
+        document.write("<link rel=\"stylesheet\" href=css/carousel.css" + "?_=" + Math.random() + "'><\/link>");
+        document.write("<link rel=\"stylesheet\" href=css/nav.css" + "?_=" + Math.random() + "'><\/link>");
+    </script>
+</head>
+<body>
+<div id="app" v-cloak>
+
+    <div class="navbar-wrapper">
+        <div class="container">
+            <div class="navBg iePng navBtn_hover" @mouseover=" hover = true" @mouseout="hover = false">
+                <div class="navv">
+                    <div class="navBtns clearfix">
+                        <a class="navBtn navBtn-home" href="index.html">
+                            官网首页
+                        </a>
+                        <a class="navBtn navBtn-game" href="javascript:">
+                            游戏下载
+                        </a>
+                        <a class="navBtn navBtn-data" href="account.html">
+                            账号管理
+                        </a>
+                        <a id="trans" class="navBtn navBtn-data">
+                        </a>
+                    </div>
+                </div>
+                <div :class="hover === true ? 'navContBg iePng navContBgaaa' : 'navContBg iePng'">
+                    <div class="navCont">
+                        <div class="subNavs homeSub">
+                            <a class="subNavBtn" href="index.html">
+                                官网首页
+                            </a>
+                        </div>
+                        <div class="subNavs gameSub" style="background-color: transparent;">
+                            <a class="subNavBtn" href="javascript:">
+                                游戏下载
+                            </a>
+                        </div>
+                        <div class="subNavs dataSub">
+                            <a class="subNavBtn" href="account.html">
+                                账号注册
+                            </a>
+                            <a class="subNavBtn" href="account.html">
+                                推广返利
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="top_img">
+        <div class="jumbotron panel panel-info" style="background: whitesmoke; padding: 0">
+            <div class="panel-heading">
+                <ul class="nav nav-pills" style="background: white; margin-bottom: 10px">
+                    <li role="presentation" :class="pageFlag === 0 ? 'active' : ''" @click="pageFlag = 0"><a href="javascript:">用户注册</a></li>
+                    <li role="presentation" :class="pageFlag === 2 ? 'active' : ''" @click="pageFlag = 2"><a href="javascript:">推广链接</a></li>
+                    <!--                    <li role="presentation" :class="pageFlag === 3 ? 'active' : ''" @click="pageFlag = 3"><a href="javascript:">领取礼包</a></li>-->
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div id="signup" v-if="pageFlag === 0">
+                    用户名: <input type="text" v-model="signUpForm.username" @blur="loadCaptcha()" class="form-control" placeholder="用户名" required>
+                    密码: <input type="password" v-model="signUpForm.password" class="form-control" placeholder="密码" required>
+                    安全码: <input type="text" v-model="signUpForm.securityCode" class="form-control" placeholder="安全码" required>
+                    邀请码: <input type="text" v-model="signUpForm.aff" class="form-control" placeholder="邀请码. 选填">
+                    验证码: <input type="text" v-model="signUpForm.captcha" class="form-control" placeholder="验证码" required>
+                    <img v-bind:src="captchaUri" v-if="showCaptcha" alt="验证码"/>
+                    <button class="btn btn-lg btn-info btn-block" type="button" v-on:click="signUp()">立即注册</button>
+                </div>
+                <div id="aff" v-if="pageFlag === 2">
+                    <input type="text" v-model="affForm.username" class="form-control" placeholder="用户名" required>
+                    邀请码: <input type="text" v-model="affForm.code" class="form-control" placeholder="点击下方按钮获取">
+                    邀请链接: <input type="text" v-model="affForm.uri" class="form-control" placeholder="点击下方按钮获取">
+                    <button class="btn btn-lg btn-info btn-block" type="button" v-on:click="getAff()">获取推广链接</button>
+                </div>
+                <!--                <div id="regGift" v-if="pageFlag === 3">-->
+                <!--                    <h3 style="color: red">新注册用户自动发放!</h3>-->
+                <!--                    <h3 style="color: red">每账号只能领取一次!</h3>-->
+                <!--                    <input type="text" v-model="regGiftForm.username" class="form-control" placeholder="用户名" required>-->
+                <!--                    <button class="btn btn-lg btn-info btn-block" type="button" v-on:click="getRegGift()">领取注册礼包</button>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    document.write("<script type='text/javascript' src='config.js" + "?_=" + Math.random() + "'><\/script>");
+    document.write("<script type='text/javascript' src='https://translate.google.cn/translate_a/element.js?cb=trans&hl=en" + "&_=" + Math.random() + "'><\/script>");
+
+    function trans() {
+        new google.translate.TranslateElement(
+            {
+                // pageLanguage: 'zh-CN',
+                includedLanguages: 'en, vi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: true,
+            },
+            'trans'
+        );
+    }
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            hover: false,
+            pageFlag: 0,
+            showCaptcha: false,
+            captchaUri: '',
+            signUpForm: {
+                username: '',
+                password: '',
+                securityCode: '',
+                aff: '',
+                captcha: ''
+            },
+            affForm: {
+                username: '',
+                code: '',
+                uri: ''
+            },
+            regGiftForm: {
+                username: '',
+                code: '',
+                uri: ''
+            }
+        },
+        mounted: function () {
+            this.signUpForm.aff = this.getUrlKey("aff");
+        },
+        methods: {
+            signUp: function () {
+                axios
+                    .post(BaseApiUri + "/rest/1.0/auth/signup", this.signUpForm)
+                    .then(response => {
+                        let resp = response.data;
+                        if (resp.code === 200) {
+                            alert("注册成功!")
+                        } else {
+                            alert(resp.message);
+                        }
+                    })
+                    .catch(error => this.alertError(error));
+            },
+            getAff: function () {
+                if (this.affForm.username === '') {
+                    alert("请填写用户名");
+                    return;
+                }
+                axios
+                    .get(BaseApiUri + `/rest/1.0/auth/aff?username=${this.affForm.username}`)
+                    .then(response => {
+                        let resp = response.data;
+                        if (resp.code === 200) {
+                            this.affForm.code = resp.data;
+                            this.affForm.uri = window.location.href.toString().split("?")[0] + `?aff=${resp.data}`;
+                            alert("生成成功!");
+                        } else {
+                            alert(resp.message);
+                        }
+                    })
+                    .catch(error => this.alertError(error));
+            },
+            getRegGift: function () {
+                if (this.regGiftForm.username === '') {
+                    alert("请填写用户名");
+                    return;
+                }
+                axios
+                    .get(BaseApiUri + `/rest/1.0/gift/reg?username=${this.regGiftForm.username}`)
+                    .then(response => {
+                        let resp = response.data;
+                        if (resp.code === 200) {
+                            alert("领取成功!");
+                        } else {
+                            alert(resp.message);
+                        }
+                    })
+                    .catch(error => this.alertError(error));
+            },
+            loadCaptcha: function () {
+                if (this.signUpForm.username === '') {
+                    return;
+                }
+                this.showCaptcha = true;
+                this.captchaUri = BaseApiUri + `/rest/1.0/auth/captcha?username=${this.signUpForm.username}&_=${Math.round(new Date() / 1000)}`;
+            },
+            getUrlKey: function (name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+            },
+            alertError: function (error) {
+                alert("服务器发生错误, 请截图联系管理员!  " + error);
+            }
+        }
+    })
+</script>
+</html>

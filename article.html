@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=11;IE=10" />
+    <title>完美剑灵</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        /* Carousel base class */
+        .carousel {
+            /*width: 350px;*/
+            height: 400px;
+        }
+
+        /* Since positioning the image, we need to help out the caption */
+        .carousel-caption {
+            z-index: 10;
+        }
+
+        /* Declare heights because of positioning of img element */
+        .carousel .item {
+            /*width: 350px;*/
+            height: 400px;
+            background-color: #777;
+        }
+
+        .carousel-inner > .item > img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            /*width: 350px;*/
+            height: 400px;
+        }
+
+        .row {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- Carousel
+            ================================================== -->
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                             alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div><!-- /.carousel -->
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-8">
+            <div class="panel panel-default" style="background: ghostwhite">
+                <div class="panel-body">
+                    <ul class="nav nav-tabs" id="type">
+                    </ul>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody id="content">
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    document.write("<script type='text/javascript' src='config.js" + "?_=" + Math.random() + "'><\/script>");
+</script>
+
+<script>
+    $(window).load(function () {
+        getArticleType();
+
+    });
+
+    function getArticleType() {
+        $.get(BaseApiUri + "/rest/1.0/article/type", function (response) {
+            if (response.code === 200) {
+                // that.articleType = response.data;
+                response.data.forEach(function (item) {
+                    $("#type").append(
+                        "<li role=\"presentation\" class=\"\">" +
+                        "  <a href=\"javascript:\" onclick=\"getArticleList(" + item.id + ")\">" + item.name + "</a>" +
+                        "</li>"
+                    )
+                });
+                getArticleList(response.data[0].id);
+            } else {
+                alert(resp.message + "\r\n" + JSON.stringify(resp.data));
+            }
+        });
+    }
+
+    function getArticleList(typeId) {
+        $.get(BaseApiUri + "/rest/1.0/article/" + typeId + "/content", function (response) {
+            if (response.code === 200) {
+                response.data.forEach(function (item) {
+                    $("#content").empty();
+                    $("#content").append(
+                        "<tr class=\"row\">\n" +
+                        "    <td class=\"col-lg-8\">" + item.title + "</td>\n" +
+                        "    <td class=\"col-lg-4\">" + item.date + "</td>\n" +
+                        "</tr>"
+                    )
+                })
+            } else {
+                alert(resp.message + "\r\n" + JSON.stringify(resp.data));
+            }
+        });
+    }
+</script>
+</html>
