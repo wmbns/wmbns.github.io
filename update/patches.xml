@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?include .\patches\*.xml?>
+<patches>
+<!-- https://static.gamecoast.net/bns_promo/ -->
+  <patch file="release.config2.xml">
+    <select-node query="/config">
+      <select-node query="./option[@name='lobby-gate-address']/@value">
+        <set-value value="127.0.243.99" />
+      </select-node>
+      <select-node query="./option[@name='np-address']/@value">
+        <set-value value="127.0.243.99" />
+      </select-node>
+      <select-node query="./option[@name='np-program-id']/@value">
+        <set-value value="341" />
+      </select-node>
+      <select-node query="./option[@name='np-gamecode']/@value">
+        <set-value value="bns" />
+      </select-node>
+      <select-node query="./option[@name='np-bns-server-app-id']/@value">
+        <set-value value="1DCEDC3F-946F-DEB5-BD51-E11E95CFE15A" />
+      </select-node>
+      <select-node query="./option[@name='np-bns-client-app-id']/@value">
+        <set-value value="4D3C3964-A763-7F66-2960-613FB78ADEB4" />
+      </select-node>
+      <select-node query="./option[@name='np-in-game-web-app-id']/@value">
+        <set-value value="A00E2088-4CDE-94E9-3937-A45E7D4776E9" />
+      </select-node>
+      <select-node query="./option[@name='np-external-web-app-id']/@value">
+        <set-value value="2B8B8FCF-FD82-FDDC-0094-39FB650090F0" />
+      </select-node>
+      <select-node query="./option[@name='np-bns-client-app-group-id']/@value">
+        <set-value value="78" />
+      </select-node>
+    </select-node>
+  </patch>
+  <patch file="system.config2.xml">
+    <select-node query="/config">
+      <select-node query="./option[@name='use-web-launching']/@value">
+        <set-value value="true" />
+      </select-node>
+      <select-node query="./group[@name='innova']">
+        <select-node query="./option[@name='enable-4game']/@value">
+          <set-value value="true" />
+        </select-node>
+        <select-node query="./option[@name='enable-frost']/@value">
+          <set-value value="false" />
+        </select-node>
+      </select-node>
+    </select-node>
+  </patch>
+  <patch file="system.config2.xml">
+    <select-node query="/config">
+      <!-- hide eula -->
+      <select-node query="./option[@name='show-clause']/@value">
+        <set-value value="false" />
+      </select-node>
+      <!-- disable nagle algorithm in arena -->
+      <select-node query="./option[@name='use-nagle-arena']/@value">
+        <set-value value="true" />
+      </select-node>
+      <!-- don't minimize other windows -->
+      <select-node query="./option[@name='minimize-window']/@value">
+        <set-value value="true" />
+      </select-node>
+      <select-node query="./option[@name='use-friend']/@value">
+        <set-value value="true" />
+      </select-node>
+      <select-node query="./option[@name='use-otp2']/@value">
+        <set-value value="true" />
+      </select-node>
+      <select-node query="./option[@name='use-premium-depository']/@value">
+        <set-value value="true" />
+      </select-node>
+      <select-node query="./option[@name='use-spam-filter']/@value">
+        <set-value value="true" />
+      </select-node>
+      <select-node query="./option[@name='use-duel-bot-challenge']/@value">
+        <set-value value="true" />
+      </select-node>
+    </select-node>
+  </patch>
+  <patch file="system.config2.xml">
+    <select-node query="/config">
+      <select-node query="./group[@name='in-game-web']">
+        <select-node query="./option[@name='use-goods-store']/@value">
+          <set-value value="true" />
+        </select-node>
+        <select-node query="./option[@name='use-bns-tv']/@value">
+          <set-value value="true" />
+        </select-node>
+        <select-node query="./option[@name='use-market']/@value">
+          <set-value value="true" />
+        </select-node>
+      </select-node>
+    </select-node>
+  </patch>
+  <patch file="client.config2.xml">
+    <select-node query="/config">
+      <!-- dps meter -->
+      <select-node query="./group[@name='damage-meter']">
+        <select-node query="./option[@name='show-effect-only-info']/@value">
+          <set-value value="y" />
+        </select-node>
+        <select-nodes query="./option[starts-with(@name,'showtype-')]/@value">
+          <set-value value="2" />
+        </select-nodes>
+      </select-node>
+      <!-- breast physics -->
+      <select-node query="./group[@name='uncategorized']/option[@name='no-use-breast-physics']/@value">
+        <set-value value="no" />
+      </select-node>
+    </select-node>
+  </patch>
+  <patch file="system.config2.xml">
+    <select-node query="/config">
+      <select-node query="./group[@name='goods-store']">
+
+        <select-node query="./option[@name='enable-in-lobby']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable']/@value">
+          <set-value value="true" />
+        </select-node>
+
+        <select-node query="./option[@name='currency-group-id']/@value">
+          <set-value value="21" />
+        </select-node>
+        <select-node query="./option[starts-with(@name,'currency-group-id-')]/@value">
+          <set-value value="0" />
+        </select-node>
+    
+        <select-node query="./option[@name='enable-today-showcase']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable-today-showcase-2']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable-today-showcase-3']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable-today-showcase-4']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable-vip-showcase']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable-vip-showcase-2']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable-vip-showcase-3']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable-vip-showcase-4']/@value">
+          <set-value value="false" />
+        </select-node>
+        <select-node query="./option[@name='enable-extra-showcase']/@value">
+          <set-value value="false" />
+        </select-node>
+
+      </select-node>
+
+      <select-node query="./group[@name='secondary-money']">
+        <select-node query="./option[@name='currency-group-id']/@value">
+          <set-value value="21" />
+        </select-node>
+      </select-node>
+
+      <select-node query="./group[@name='instant-payment']">
+        <select-node query="./option[@name='enable']/@value">
+          <set-value value="false" />
+        </select-node>
+        
+        <select-node query="./option[@name='currency-group-id']/@value">
+          <set-value value="21" />
+        </select-node>
+      </select-node>
+
+      <select-node query="./group[@name='tencent']">
+
+        <select-node query="./option[@name='ingameshop-request-currency-group-id']/@value">
+          <set-value value="21" />
+        </select-node>
+        <select-node query="./option[@name='ingameshop-shop-1-currency-group-id']/@value">
+          <set-value value="21" />
+        </select-node>
+        <select-node query="./option[@name='ingameshop-shop-2-currency-group-id']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='ingameshop-shop-3-currency-group-id']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='ingameshop-shop-4-currency-group-id']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='ingameshop-shop-1-currency-id']/@value">
+          <set-value value="13" />
+        </select-node>
+        <select-node query="./option[@name='ingameshop-shop-2-currency-id']/@value">
+          <set-value value="13" />
+        </select-node>
+        <select-node query="./option[@name='ingameshop-shop-3-currency-id']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='ingameshop-shop-4-currency-id']/@value">
+          <set-value value="0" />
+        </select-node>
+
+        <select-node query="./group[@name='np-auction']">
+          <select-node query="./option[@name='request-currency-group-id']/@value">
+            <set-value value="21" />
+          </select-node>
+          <select-node query="./option[@name='use-buy-currency-group-id']/@value">
+            <set-value value="21" />
+          </select-node>
+          <select-node query="./option[@name='use-receive-currency-group-id']/@value">
+            <set-value value="21" />
+          </select-node>
+          <select-node query="./option[@name='use-fee-currency-group-id']/@value">
+            <set-value value="21" />
+          </select-node>
+          <select-node query="./option[@name='use-buy-currency-id']/@value">
+            <set-value value="13" />
+          </select-node>
+          <select-node query="./option[@name='use-receive-currency-id']/@value">
+            <set-value value="13" />
+          </select-node>
+        </select-node>
+
+      </select-node>
+
+      <select-node query="./group[@name='attendance']">
+        <select-node query="./option[@name='promotion-goods-currency-group-id']/@value">
+          <set-value value="21" />
+        </select-node>      
+      </select-node>
+
+      <select-node query="./option[@name='enable-dragon-jade-shop']/@value">
+        <set-value value="false" />
+      </select-node>
+      <select-node query="./option[@name='dragon-jade-currency-group-id']/@value">
+        <set-value value="21" />
+      </select-node>
+      <select-node query="./option[@name='dragon-jade-currency-id']/@value">
+        <set-value value="13" />
+      </select-node>
+      <select-node query="./option[@name='dragon-jade-shop-vip-category-id']/@value">
+        <set-value value="0" />
+      </select-node>
+      <select-node query="./option[@name='dragon-jade-shop-notice-url']/@value">
+        <set-value value="" />
+      </select-node>  
+  
+      <select-node query="./option[@name='dragon-silver-currency-group-id']/@value">
+        <set-value value="0" />
+      </select-node>
+  
+    </select-node>
+  </patch>
+  <!--使用中文字库-->
+  <patch file="client.config2.xml">
+    <select-node query="/config">
+      <select-node query="./group[@name='ui-common']">
+        <select-node query="./option[@name='font-name-1']/@value">
+          <set-value value="00020428.YGO550" />
+        </select-node>
+        <select-node query="./option[@name='font-name-2']/@value">
+          <set-value value="00020428.KROE0563" />
+        </select-node>
+		<select-node query="./option[@name='font-name-3']/@value">
+          <set-value value="00020428.CrounM" />
+        </select-node>
+		<select-node query="./option[@name='font-name-4']/@value">
+          <set-value value="00020428.FZY3K" />
+        </select-node>
+		<select-node query="./option[@name='font-name-5']/@value">
+          <set-value value="00020428.FZDHTK" />
+        </select-node>
+		<select-node query="./option[@name='font-name-6']/@value">
+          <set-value value="00020428.DFU_HMD" />
+        </select-node>
+		<select-node query="./option[@name='font-name-7']/@value">
+          <set-value value="" />
+        </select-node>
+		<select-node query="./option[@name='font-name-8']/@value">
+          <set-value value="" />
+        </select-node>
+		<select-node query="./option[@name='font-name-9']/@value">
+          <set-value value="" />
+        </select-node>
+		<select-node query="./option[@name='font-name-10']/@value">
+          <set-value value="" />
+        </select-node>
+      </select-node>
+    </select-node>
+  </patch>
+  <!--功能類開關-->
+  <patch file="system.config2.xml">
+    <select-node query="/config">
+		<!--啟用角色名數字支持-->
+		<select-node query="./option[@name='enable-numeric-for-name']/@value">
+          <set-value value="true" />
+        </select-node>
+		<!--啟用角色名數字支持-->
+		<select-node query="./option[@name='enable-multilingual-name']/@value">
+          <set-value value="true" />
+        </select-node>
+		<!--适配邮箱登录-->
+		<select-node query="./option[@name='np-account-postfix']/@value">
+          <set-value value="@wmbns.org" />
+        </select-node>
+		<!--喇叭開關-->
+		<select-node query="./option[@name='use-megaphone']/@value">
+          <set-value value="true" />
+        </select-node>
+		<!--決鬥開關-->
+		<select-node query="./option[@name='use-duel-fightmode-ui']/@value">
+          <set-value value="true" />
+        </select-node>
+		<!--工會戰場開關-->
+		<select-node query="./option[@name='use-guild-battle-field']/@value">
+          <set-value value="true" />
+        </select-node>
+		<!--工會語音開關-->
+		<select-node query="./option[@name='use-guild-voice-chat']/@value">
+          <set-value value="true" />
+        </select-node>
+	</select-node>
+  </patch>
+  <!--快捷類操作-->
+  <patch file="client.config2.xml">
+    <select-node query="/config">
+		<!--秒開箱-->
+		<select-node query="./group[@name='inventory']">
+			<select-node query="./option[@name='self-restraint-gauge-time']/@value">
+			  <set-value value="0.000000" />
+			</select-node>
+		</select-node>
+		<!--秒轉換-->
+		<select-node query="./group[@name='particle']">
+			<select-node query="./option[@name='item-transform-progressing-particle-duration']/@value">
+			  <set-value value="0.0" />
+			</select-node>
+		</select-node>
+    </select-node>
+  </patch>
+  <!--商城-->
+  <patch file="release.config2.xml">
+    <select-node query="/config">
+      <select-node query="./group[@name='goods-store']">
+        <select-node query="./option[@name='root-category-id']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='currency-id-for-mileage']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='currency-id-for-mileage-2']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='currency-id-for-mileage-3']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='currency-id-for-mileage-4']/@value">
+          <set-value value="0" />
+        </select-node>
+        <select-node query="./option[@name='currency-group-id-2']/@value">
+          <set-value value="18" />
+        </select-node>
+        <select-node query="./option[@name='currency-group-id-3']/@value">
+          <set-value value="19" />
+        </select-node>
+        <select-node query="./option[@name='currency-group-id-4']/@value">
+          <set-value value="45" />
+        </select-node>
+        <select-node query="./option[@name='use-direct-purchase-for-charge']/@value">
+          <set-value value="false" />
+        </select-node>
+      </select-node>
+    </select-node>
+  </patch>
+ <!-- 关闭游戏WEB功能 -->	
+  <patch file="system.config2.xml">
+    <select-node query="/config">      
+      <select-nodes query="./group[@name='in-game-web']">
+        <select-nodes query="./option[starts-with(@name,'use-') and @value='true']/@value">
+          <set-value value="false" />
+        </select-nodes>
+        <select-nodes query="./option[contains(@name,'-url') and starts-with(@value,'http')]/@value">
+          <set-value value="" />
+        </select-nodes>
+      </select-nodes>
+      <select-node query="./group[@name='tencent']">
+        <select-nodes query="./option[starts-with(@name,'use-') and @value='true']/@value">
+          <set-value value="false" />
+        </select-nodes>
+        <select-nodes query="./option[starts-with(@name,'enable-') and @value='true']/@value">
+          <set-value value="false" />
+        </select-nodes>
+        <select-nodes query="./option[contains(@name,'-uri') and starts-with(@value,'http')]/@value">
+          <set-value value="" />
+        </select-nodes>
+        <select-node query="./group[@name='in-game-web']">
+          <select-nodes query="./option[starts-with(@name,'use-') and @value='true']/@value">
+            <set-value value="false" />
+          </select-nodes>
+          <select-nodes query="./option[contains(@name,'-url') and starts-with(@value,'http')]/@value">
+            <set-value value="" />
+          </select-nodes>
+        </select-node>
+        <select-node query="./group[@name='np-auction']">
+          <select-nodes query="./option[contains(@name,'-url') and starts-with(@value,'http')]/@value">
+            <set-value value="" />
+          </select-nodes>
+        </select-node>
+      </select-node>
+    </select-node>
+  </patch>
+</patches>
+
