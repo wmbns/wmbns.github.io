@@ -5,10 +5,10 @@
   <patch file="release.config2.xml">
     <select-node query="/config">
       <select-node query="./option[@name='lobby-gate-address']/@value">
-        <set-value value="182.16.101.47" />
+        <set-value value="127.0.243.99" />
       </select-node>
       <select-node query="./option[@name='np-address']/@value">
-        <set-value value="182.16.101.47" />
+        <set-value value="127.0.243.99" />
       </select-node>
       <select-node query="./option[@name='np-program-id']/@value">
         <set-value value="341" />
@@ -298,6 +298,10 @@
     <select-node query="/config">
 		<!--啟用角色名數字支持-->
 		<select-node query="./option[@name='enable-numeric-for-name']/@value">
+          <set-value value="true" />
+        </select-node>
+		<!--啟用角色名數字支持-->
+		<select-node query="./option[@name='enable-multilingual-name']/@value">
           <set-value value="true" />
         </select-node>
 		<!--适配邮箱登录-->
