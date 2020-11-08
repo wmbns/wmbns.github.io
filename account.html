@@ -72,7 +72,7 @@
                 <div id="signup" v-if="pageFlag === 0">
                     用户名: <input type="text" v-model="signUpForm.username" @blur="loadCaptcha()" class="form-control" placeholder="用户名" required>
                     密码: <input type="password" v-model="signUpForm.password" class="form-control" placeholder="密码" required>
-                    安全码: <input type="text" v-model="signUpForm.securityCode" class="form-control" placeholder="安全码" required>
+                    二级密码: <input type="text" v-model="signUpForm.securityCode" class="form-control" placeholder="二级密码" required>
                     邀请码: <input type="text" v-model="signUpForm.aff" class="form-control" placeholder="邀请码. 选填">
                     验证码: <input type="text" v-model="signUpForm.captcha" class="form-control" placeholder="验证码" required>
                     <img v-bind:src="captchaUri" v-if="showCaptcha" alt="验证码"/>
