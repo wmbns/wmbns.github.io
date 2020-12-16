@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+	<head>
+		<title>专属空间</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+		<meta http-equiv="Cache-Control" content="max-age=0" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!-- 删除苹果默认的工具栏和菜单栏 -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<!-- 设置苹果工具栏颜色 -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<!-- 启用360浏览器的极速模式(webkit) -->
+		<meta name="renderer" content="webkit">
+		<!-- 避免IE使用兼容模式 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- 微软的老式浏览器 -->
+		<meta name="MobileOptimized" content="320">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- UC强制全屏 -->
+		<meta name="full-screen" content="yes">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- 适应移动端end -->
+        <link rel="stylesheet" type="text/css" href="bundles/acmefrontend/share/css/dr_wish.css" />
+        <!-- 百度统计 -->
+        <script type="text/javascript">
+            if(location.protocol == 'http'){
+                var locationurl = "https://" + location.host + location.pathname;
+                window.href = locationurl;
+            }
+        </script>
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "//hm.baidu.com/hm.js?f2cbc9fb1c5345bf8aa16f5a3b47eb3a";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+             })();
+        </script>
+		<script type="text/javascript" src="res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+<body>
+<div class="wish_cort">
+        <div class="wish_certificate">
+        <img src="zone/share/certificate.png" alt="">
+        <p class="qrsrman">秦亚楠</p>
+        <p class="qrsrWoman">刘可心</p>
+        <p class="qrsrcode">CN3015</p>
+        <p class="qrsrdate">2020-12-16</p>       
+    </div>   
+    <div class="wish_word delay09" style="display: none;">
+        <p>秦亚楠<span style="font-size:20px">&nbsp赠&nbsp</span>刘可心</p>
+        <!-- <img src="/bundles/acmefrontend/share/img/eng.png" /> -->
+    </div>
+    <!-- <div class="wish_logo delay12">
+        <img src="/bundles/acmefrontend/share/img/word.png" />
+    </div> -->
+    <div class="wish_share delay15" >
+        <div class="wish_button">立即分享</div>
+  
+        <a href="https://home.darryring.com/m.darryring.com" class="more_cp">>>了解DR求婚钻戒</a>
+    </div>
+    <a href="javascript:void(0);" class="u-globalAudio">
+        <i class="icon-music"></i>
+        <audio id="myAudio" src="" autoplay="autoplay" loop="loop"></audio>
+    </a>
+    <!-- 微信二维码 -->
+    <div id="mask"></div>
+    <div class="weixin_al">
+        <div class="weixin-qcode" style="">
+            <div class="qrcodeTitle" style="">扫描二维码</div>
+            <div class="qrcodeClose" style=""> x </div>
+            <div id="qrcodeTable" style=""></div>
+        </div>
+    </div>
+    <!-- 微信二维码 -->
+    <div class="showall"></div>
+</div>
+</body>
+<script type="text/javascript" src="bundles/acmefrontend/share/js/zepto.min.js" ></script>
+<script type="text/javascript" src="bundles/acmefrontend/share/js/globalAudio.js" ></script>
+<script type="text/javascript" src="bundles/acmefrontend/share/js/wish.js" ></script>
+
+
+
+<script type="text/javascript">
+
+</script>
+<script>
+// 配置微信分享
+    var msgTitle = "";
+    var msgDesc = "Darry Ring真爱戒指，每位男士一生仅能赠出一枚，以此为誓，承诺一生唯一的爱情。";
+    var msgLink = "https://wmbns.org/dr";
+    var msgImgurl = "https://elove.darryring.com/group1/M00/22/C1/wKgc6F9y2yGAEilrAAGMpz8WK0M210.jpg";
+	function share(){
+		//分享给朋友
+        wx.onMenuShareAppMessage({
+            title: msgTitle, // 分享标题
+            desc: msgDesc, // 分享描述
+            link: msgLink,
+            imgUrl: msgImgurl,
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                $(".showall").hide();
+            },
+            fail: function () {
+                alert("分享失败");
+            }
+        });
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: msgTitle, // 分享标题
+            link: msgLink,
+            imgUrl: msgImgurl,
+            success: function (res) {
+                $(".showall").hide();
+            },
+            fail: function () {
+                alert("分享失败");
+            }
+        });
+        wx.onMenuShareQQ({
+            title: msgTitle, // 分享标题
+            desc: msgDesc, // 分享描述
+            link: msgLink,
+            imgUrl: msgImgurl,
+            success: function (res) {
+               $(".showall").hide();
+            },
+            fail: function () {
+                alert("分享失败");
+            }
+        });
+        wx.onMenuShareWeibo({
+            title: msgTitle, // 分享标题
+            desc: msgDesc, // 分享描述
+            link: msgLink,
+            imgUrl: msgImgurl,
+            success: function (res) {
+                //$(".share").hide();
+            },
+            fail: function () {
+                alert("分享失败");
+            }
+        });
+	
+	}
+	
+        wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: 'wx61f1db82742a646e', // 必填，公众号的唯一标识
+        timestamp: '1608118026', // 必填，生成签名的时间戳
+        nonceStr: 'VkQqeOZvJMdjt1t2', // 必填，生成签名的随机串
+        signature: 'f9346e2d1e8236132e6d39291dcd2bf45136e75c', // 必填，签名，见附录1
+        jsApiList: [
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+    ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });  
+
+    wx.ready(function () {
+		share();
+         // $('.wei').click(function(){
+
+         
+         //     wx.onMenuShareAppMessage({
+         //        title: msgTitle, // 分享标题
+         //        desc: msgDesc, // 分享描述
+         //        link: msgLink,
+         //        imgUrl: msgImgurl,
+         //        success: function () {
+         //            // 用户确认分享后执行的回调函数
+         //            //$(".share").hide();
+         //        },
+         //        fail: function () {
+         //            alert("分享失败");
+         //        }
+         //    });
+         //  })
+    });
+</script>
+<script type="text/javascript" src="bundles/acmefrontend/zonejs/jquery-1.10.1.min.js"></script>
+ <script type="text/javascript" src="bundles/acmefrontend/zonejs/jquery.qrcode.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){ 
+
+    function isWeiXin(){ 
+        var ua = window.navigator.userAgent.toLowerCase(); 
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+            $(".wish_button").click(function(){
+                $(".showall").show();
+            })
+            $(".showall").click(function(){
+                $(this).hide();
+            });
+        }
+        else
+        { 
+        
+            $('#qrcodeTable').qrcode({
+            render  : "table",
+            text    : "https://wmbns.org/dr"
+            });
+            
+            $('.wish_button').click(function() {
+                $("#mask, .weixin_al").show();
+            });
+            $('.qrcodeClose').click(function() {
+                $("#mask, .weixin_al").hide();
+            });
+
+        } 
+    } 
+
+    isWeiXin();
+}
+</script>
+</html>
