@@ -1,1 +1,1 @@
-var BaseApiUri = "http://139.159.217.2:8080";
+var BaseApiUri = "http://8.134.15.150:8080";
